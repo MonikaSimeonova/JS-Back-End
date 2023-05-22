@@ -6,7 +6,9 @@ const app = express();
 const port = 5000;
 
 //css middleware
-app.use(express.static(path.resolve(__dirname, 'public')))
+//with path 
+//app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(express.static('src/public'));
 
 //Handlebars
 
