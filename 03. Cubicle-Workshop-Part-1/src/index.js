@@ -2,23 +2,13 @@ const express = require('express');
 
 const expressConfig = require('./config/expressConfig');
 const handlebarsConfig = require('./config/handlebarsConfig');
-const homeController = require('./controllers/homeContoller');
-const cubeController = require('./controllers/cubeController')
+const routes = require('./routes');
 
 const app = express();
 const port = 5000;
 
 expressConfig(app);
 handlebarsConfig(app);
-
-
-//modular controllers
-app.use(homeController);
-app.use('/cubes', cubeController);
-
-//page not found redirect
-app.get('*', (req, res)=>{
-    res.redirect('/404')
-})
+app.use(routes)
 
 app.listen(port, ()=> console.log(`Server is running on port ${port}...`));
