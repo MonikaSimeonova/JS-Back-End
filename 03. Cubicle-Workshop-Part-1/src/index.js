@@ -1,27 +1,19 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
-const path = require('path');
+
+const expressConfig = require('./config/expressConfig');
+const handlebarsConfig = require('./config/handlebarsConfig');
+const homeController = require('./controllers/homeContoller');
+const cubeController = require('./controllers/cubeController')
 
 const app = express();
 const port = 5000;
 
-//css middleware
-//with path 
-//app.use(express.static(path.resolve(__dirname, 'public')));
-app.use(express.static('src/public'));
-
-//Handlebars
-
-app.engine('hbs', handlebars.engine({
-    extname: 'hbs',
-}));
-app.set('view engine', 'hbs');
-app.set('views', 'src/views');// set the views folder directory
+expressConfig(app);
+handlebarsConfig(app);
 
 
-//Routers
-app.get('/', (req, res)=>{
-    res.render('index')
-})
+//modular controllers
+app.use(homeController);
+app.use('/cubes', cubeController);
 
 app.listen(port, ()=> console.log(`Server is running on port ${port}`));
