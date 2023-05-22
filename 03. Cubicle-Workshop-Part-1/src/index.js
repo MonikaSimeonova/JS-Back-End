@@ -16,4 +16,9 @@ handlebarsConfig(app);
 app.use(homeController);
 app.use('/cubes', cubeController);
 
+//page not found redirect
+app.get('*', (req, res)=>{
+    res.redirect('/404')
+})
+
 app.listen(port, ()=> console.log(`Server is running on port ${port}...`));

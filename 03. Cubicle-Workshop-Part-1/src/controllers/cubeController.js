@@ -4,7 +4,7 @@ const cubeManager = require('../managers/cubeManager')
 
 //path /cubes/create
 router.get('/create', (req, res) => {
-    console.log(cubeManager.getAll());
+    //console.log(cubeManager.getAll());
     res.render('create')
 });
 
@@ -15,6 +15,14 @@ router.post('/create', (req, res) => {
 
     res.redirect('/');
 });
+router.get('/:cubeId/details', (req, res)=>{
+    const cube = cubeManager.getOne(req.params.cubeId);
+
+    if(!cube){
+        return res.redirect('/404');
+    }
+    res.render('details', {cube});
+})
 
 
 module.exports = router;
