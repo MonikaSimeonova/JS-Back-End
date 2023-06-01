@@ -3,6 +3,7 @@ const express = require('express');
 const expressConfig = require('./config/expressConfig');
 const handlebarsConfig = require('./config/handlebarsConfig');
 const dbConnect = require('./config/dbConfig');
+
 const routes = require('./routes');
 
 const app = express();
