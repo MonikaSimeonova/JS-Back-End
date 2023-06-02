@@ -5,6 +5,11 @@ const cubeSchema = new mongoose.Schema({
     description: String,
     imageUrl: String,
     difficultyLevel: Number,
+    //create connection between cubes and accessories
+    accessories: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Accessory',
+    }],
 });
 
 const Cube = mongoose.model('Cube', cubeSchema);
