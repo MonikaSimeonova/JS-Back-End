@@ -3,7 +3,7 @@ const cubeManager = require('../managers/cubeManager')
 //Routers
 
 router.get('/', async(req, res) => {
-    console.log(req.query);
+    // console.log(req.query);
     const {search, from, to} = req.query;
     const cubes = await cubeManager.getAll(search, from, to);
 
