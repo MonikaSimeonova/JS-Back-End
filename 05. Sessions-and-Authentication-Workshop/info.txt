@@ -1,0 +1,15 @@
+controllers:
+actions, http request response, validations
+--->
+managers/services:
+bussines logic
+domain logic
+--->
+data layers(models)
+
+MVC ---> Controller has connection with the view and model
+
+
+controller calls manager calls models
+
+forbidden to use circulat dependension --> import controllers to controlles, managers to managers etc.
