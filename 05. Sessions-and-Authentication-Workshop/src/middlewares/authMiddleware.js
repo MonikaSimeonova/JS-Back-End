@@ -26,3 +26,10 @@ exports.auth = async (req, res, next) => {
     }
 
 };
+//to avoid entering certain pages when the user is not logged in
+exports.isAuth = (req, res, next) => {
+    if (!req.user) {
+        return res.redirect('/users/login');
+    }
+    next();
+};
