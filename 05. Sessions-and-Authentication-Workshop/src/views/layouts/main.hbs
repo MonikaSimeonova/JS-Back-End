@@ -24,9 +24,17 @@
                 <li><a href="/users/login">Login</a></li>
                 <li><a href="/users/register">Register</a></li>
                 {{/if}}
-                
+
             </ul>
         </header>
+        
+       {{!-- {{#if errorMessage}} --}}
+        {{#each errorMessages}}
+        <div id="notifications">
+            <p id="notification-message">{{this}}</p>
+        </div>
+        {{!-- {{/if}} --}}
+        {{/each}}
         {{{body}}}
     </div>
     <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
