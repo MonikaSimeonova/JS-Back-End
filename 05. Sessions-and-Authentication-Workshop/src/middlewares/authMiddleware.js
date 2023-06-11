@@ -10,6 +10,10 @@ exports.auth = async (req, res, next) => {
             const user = await jwt.verify(token, SECRET);
 
             req.user = user;
+            //for navbar view 
+            res.locals.user = user;
+            //for req, res 
+            res.locals.isAuthenticated = true;
 
             next();
         } catch (err) {
