@@ -16,3 +16,10 @@
     - add main layout and partials
     - fix static paths
     - render home page
+7. Add controller folder with homeControllers
+8. Add DB
+    - install mongoose
+    - connect DB
+9. Authentication pages
+- add userController
+-add controller to routes
