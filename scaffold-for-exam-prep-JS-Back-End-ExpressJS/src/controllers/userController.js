@@ -17,6 +17,7 @@ router.get('/register', (req, res) => {
 })
 router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body;
+    
     await userManager.register({ username, email, password, repeatPassword });
 
     res.send('regged in')
