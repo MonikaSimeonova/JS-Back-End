@@ -23,3 +23,13 @@
 9. Authentication pages
 - add userController
 -add controller to routes
+render login and register
+10. Andd user mmdel, add unique true username
+ - validate repeat password
+11. Add user manager
+- add login and register methods
+- required in user controller
+12.Modify login and register forms
+13. add register and login post actions
+14. implement user manager login and register
+15.
