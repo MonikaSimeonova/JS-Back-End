@@ -42,3 +42,15 @@ render login and register
 18. generate JWT token
     - install jwt
     -promisify jsonwebtoken
+    -create secter, generate token
+    19. Return token in cookie
+    - intal and config cookie-parser
+    18. Logout
+    19. Authtentication middleware
+    20. Authrization middlaware
+    21. Dinamig nav bar
+    -add res locals
+    22. Error handling
+    - global error handler
+    23. Add 404 page
+    24. show Error notifications
