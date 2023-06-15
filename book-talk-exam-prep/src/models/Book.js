@@ -32,10 +32,10 @@ const bookShema = new mongoose.Schema({
         ref: 'User',
     },
     wishingList: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'User'
-        }
+            {
+                type: mongoose.Types.ObjectId,
+                ref: 'User',
+            }
     ]
 })
 

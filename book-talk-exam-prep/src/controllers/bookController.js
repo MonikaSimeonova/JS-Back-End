@@ -7,48 +7,57 @@ router.get('/create', (req, res) => {
     res.render('create')
 });
 router.post('/create', async (req, res) => {
-    const {title, author, genre, stars, image, review} = req.body;
-    
+    const { title, author, genre, stars, image, review } = req.body;
+
     try {
-        await bookManager.create({title, author, genre, stars, image, review, owner: req.user._id});
+        await bookManager.create({ title, author, genre, stars, image, review, owner: req.user._id });
         res.redirect('/books/catalog')
     } catch (err) {
         res.render('create', { error: getErrorMessage(err) })
     }
 });
 //catalog
-router.get('/catalog', async(req, res) => {
+router.get('/catalog', async (req, res) => {
     const books = await bookManager.getAll().lean();
-    res.render('catalog', {books})
+    res.render('catalog', { books })
 });
 //details
-router.get('/:bookId/details', async(req, res) => {
+router.get('/:bookId/details', async (req, res) => {
     const book = await bookManager.findOne(req.params.bookId);
-    console.log(book);
+    
     const isOwner = req.user?._id == book.owner._id;
-    console.log(isOwner);
-    res.render('details', {book, isOwner})
+    
+    res.render('details', { book, isOwner })
 });
 //delete
-router.get('/:bookId/delete', async(req, res) => {
+router.get('/:bookId/delete', async (req, res) => {
     await bookManager.delete(req.params.bookId);
     res.redirect('/books/catalog')
 });
 //edit
-router.get('/:bookId/edit', async(req, res) => {
+router.get('/:bookId/edit', async (req, res) => {
     const book = await bookManager.findOne(req.params.bookId);
-    res.render('edit', {book})
+    res.render('edit', { book })
 });
-router.post('/:bookId/edit', async(req, res) => {
+router.post('/:bookId/edit', async (req, res) => {
     const bookData = req.body;
     try {
         await bookManager.update(req.params.bookId, bookData);
-    res.redirect(`/books/${req.params.bookId}/details`)
+        res.redirect(`/books/${req.params.bookId}/details`)
     } catch (err) {
-        res.render('edit', {error: getErrorMessage(err)})
+        res.render('edit', { error: getErrorMessage(err) })
     }
-    
+
 });
+
+router.get('/:bookId/wish', async(req,res)=>{
+    const book = await bookManager.findOne(req.params.bookId);
+
+    book.wishingList.push(req.user._id);
+
+    await book.save();
+    res.redirect(`/books/${req.params.bookId}/details`);
+})
 
 
 module.exports = router;
