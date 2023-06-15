@@ -39,6 +39,16 @@ router.get('/:bookId/edit', async(req, res) => {
     const book = await bookManager.findOne(req.params.bookId);
     res.render('edit', {book})
 });
+router.post('/:bookId/edit', async(req, res) => {
+    const bookData = req.body;
+    try {
+        await bookManager.update(req.params.bookId, bookData);
+    res.redirect(`/books/${req.params.bookId}/details`)
+    } catch (err) {
+        res.render('edit', {error: getErrorMessage(err)})
+    }
+    
+});
 
 
 module.exports = router;
