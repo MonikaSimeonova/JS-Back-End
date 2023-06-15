@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const bookManager = require('../managers/bookManager');
 const { getErrorMessage } = require('../utils/errorHelpers');
+
+//create
 router.get('/create', (req, res) => {
     res.render('create')
 });
@@ -13,6 +15,11 @@ router.post('/create', async (req, res) => {
     } catch (err) {
         res.render('create', { error: getErrorMessage(err) })
     }
+});
+//catalog
+router.get('/catalog', async(req, res) => {
+    const books = await bookManager.getAll().lean();
+    res.render('catalog', {books})
 });
 
 module.exports = router;
