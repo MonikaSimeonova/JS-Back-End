@@ -24,9 +24,9 @@ router.get('/catalog', async (req, res) => {
 //details
 router.get('/:bookId/details', async (req, res) => {
     const book = await bookManager.findOne(req.params.bookId);
-    
+
     const isOwner = req.user?._id == book.owner._id;
-    
+
     res.render('details', { book, isOwner })
 });
 //delete
@@ -50,13 +50,17 @@ router.post('/:bookId/edit', async (req, res) => {
 
 });
 
-router.get('/:bookId/wish', async(req,res)=>{
-    const book = await bookManager.findOne(req.params.bookId);
+router.get('/:bookId/wish', async (req, res) => {
+    const bookId = req.params.bookId
+    const userId = req.user._id;
+    try {
+        
+        await bookManager.addWish(bookId, userId);
+        res.redirect(`/books/${bookId}/details`);
 
-    book.wishingList.push(req.user._id);
-
-    await book.save();
-    res.redirect(`/books/${req.params.bookId}/details`);
+    } catch (err) {
+        res.render('details', { error: getErrorMessage(err) })
+    }
 })
 
 
