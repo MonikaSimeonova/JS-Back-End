@@ -5,15 +5,19 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true,'Username is required'],
-        unique: true
+        unique: true,
+        minlenght: [4,'Username should be at least 4 characters.']
     },
     email: {
         type: String,
-        required: [true,'Email is required']
+        required: [true,'Email is required'],
+        minlenght: [4,'Email should be at least 4 characters.'],
+        match: [/^[A-za-z0-9]+@\w+.\w+/, 'Invalid email']
     },
     password: {
         type: String,
-        required: [true,'Password is required']
+        required: [true,'Password is required'],
+        minlenght: [3,'Password should be at least 3 characters.']
     },
    
 });

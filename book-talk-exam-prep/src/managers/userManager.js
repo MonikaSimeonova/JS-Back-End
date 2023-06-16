@@ -43,3 +43,5 @@ async function generateToken(user) {
     return token;
 }
 
+
+
