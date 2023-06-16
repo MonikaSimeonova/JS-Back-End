@@ -45,8 +45,8 @@ router.get('/logout',isAuth, (req, res) => {
 router.get('/profile',isAuth, async(req,res)=>{
     const books = await bookManager.getWished(req.user._id).lean()
     const user = req.user;
-    console.log(user);
-    console.log(books);
+    // console.log(user);
+    // console.log(books);
     res.render('users/profile', {books,user})
 })
 
