@@ -1,0 +1,64 @@
+
+
+        <main>
+
+            <!-- In case of error, display the following div--><!--
+
+            <div class="error-box">
+                <p>Show each error in a separate paragraph</p>
+            </div>
+
+            -->
+            
+            <!-- Details Page - Auction owner -->
+            <section id="catalog-section">
+
+                <h1 class="item">
+                    {{data.title}}
+                    <div class="f-right">
+                        <a class="action pad-small f-left" href="/auction/{{data._id}}/edit">Edit</a>
+                        <a class="action pad-small f-left" href="/auction/{{data._id}}/delete">Delete</a>
+                    </div>
+                </h1>
+                <div class="item padded">
+
+                    <div class="layout right large">
+                        
+                        <div class="col">
+                            <img src="{{data.image}}" class="img-large">
+                        </div>
+
+                        <div class="content pad-med">
+
+                            <p>In category: <strong>{{data.category}}</strong></p>
+                            <p>{{data.description}}</p>
+
+                            <div class="align-center">
+                                <div>
+                                    Current price: $<strong>{{data.price}}</strong>
+                                </div>
+
+                                <div>
+                                    <!-- If there is a bidder -->
+                                    Bid by <strong>John Maclane</strong>
+
+                                    <!-- # Bonus: If there is a bidder --><!--
+
+                                    <a class="action pad-med cta" href="#">Close Auction</a>
+                                    
+                                    # End of Bonus -->
+
+                                    <!-- If there are no bids -->
+                                    No bids
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <footer>Listed by {{data.author.username}} {{ data.author.lastname }}</footer>
+                </div>
+
+            </section>
+
+        </main>
