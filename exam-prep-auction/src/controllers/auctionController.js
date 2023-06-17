@@ -22,10 +22,20 @@ router.get('/browse', async (req, res) => {
 
 //details
 router.get('/:id/details', async (req, res) => {
-    const data = await auctionManager.getOne(req.params.id).lean();
+    const data = await auctionManager.getOne(req.params.id).populate('bidder').lean();
     if (data.author._id.toString() == req.user._id) {
+        if (data.bidder == undefined) {
+            data.empty = true;
+        }
         res.render('details-owner', { data })
     } else {
+        if (req.user._id !== data.bidder._id.toString()) {
+            
+            data.isBitted = false
+        } else {
+            data.isBitted = true
+        }
+        
         res.render('details', { data })
     }
 });
@@ -47,8 +57,8 @@ function getOptions(category) {
 }
 router.get('/:id/edit', async (req, res) => {
     const data = await auctionManager.getOne(req.params.id).lean();
-    console.log(data.category);
-     const options = getOptions(data.category)
+
+    const options = getOptions(data.category)
     res.render('edit', { data, options })
 });
 
@@ -63,6 +73,15 @@ router.get('/:id/delete', async (req, res) => {
     await auctionManager.delete(req.params.id);
 
     res.redirect('/auction/browse')
+});
+
+//bid
+router.post('/:id/bid', async (req, res) => {
+    const bidBValue = req.body;
+    const offer = Object.values(bidBValue).toString();
+
+    await auctionManager.addBidder(req.user._id, offer, req.params.id);
+    res.redirect(`/auction/${req.params.id}/details`)
 });
 
 
