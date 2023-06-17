@@ -9,7 +9,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email, password);
+        //console.log(email, password);
         const token = await userManager.login(email, password)
         res.cookie('token', token)
 
