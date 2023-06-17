@@ -4,11 +4,11 @@ const jwt = require('../lib/jwt')
 const { SECRET } = require('../config/config')
 
 
-exports.login = async (username, password) => {
+exports.login = async (email, password) => {
     // find user by username
-    const user = await User.findOne({ username })
+    const user = await User.findOne({ email })
     if (!user) {
-        throw new Error('Invalid user or password')
+        throw new Error('Invalid email or password')
     };
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) {
@@ -22,7 +22,7 @@ exports.login = async (username, password) => {
 
 exports.register = async (userData) => {
     const user = await User.findOne({ username: userData.username });
-
+    console.log(userData);
     if (user) {
         throw new Error('Username already exists')
     }
