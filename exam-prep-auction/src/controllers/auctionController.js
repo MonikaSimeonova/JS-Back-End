@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const auctionManager = require('../managers/auctionManager');
+const {getErrorMessage}=require('../utils/errorHelpers');
 
 //create
 router.get('/create', (req, res) => {
@@ -7,17 +8,27 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-    const { title, category, image, price, description } = req.body;
+    try {
+        const { title, category, image, price, description } = req.body;
 
-    await auctionManager.create({ title, category, image, price, description, author: req.user._id })
-
-    res.redirect('/auction/browse')
+        await auctionManager.create({ title, category, image, price, description, author: req.user._id })
+    
+        res.redirect('/auction/browse')
+    } catch (err) {
+        res.render('create', {error: getErrorMessage(err) })
+    }
+  
 });
 //catalog
 router.get('/browse', async (req, res) => {
-    const data = await auctionManager.getAll().lean();
+    try {
+        const data = await auctionManager.getAll().lean();
 
-    res.render('browse', { data })
+        res.render('browse', { data })
+    } catch (err) {
+        res.render('browse', {error: getErrorMessage(err) })
+    }
+   
 });
 
 //details
@@ -64,9 +75,16 @@ router.get('/:id/edit', async (req, res) => {
 
 router.post('/:id/edit', async (req, res) => {
     const data = req.body;
-    await auctionManager.update(req.params.id, data)
-
-    res.redirect(`/auction/${req.params.id}/details`)
+    try {
+        
+        await auctionManager.update(req.params.id, data)
+    
+        res.redirect(`/auction/${req.params.id}/details`)
+    } catch (err) {
+        res.render('edit', {error: getErrorMessage(err) })
+        
+    }
+   
 });
 //delete
 router.get('/:id/delete', async (req, res) => {
@@ -77,11 +95,17 @@ router.get('/:id/delete', async (req, res) => {
 
 //bid
 router.post('/:id/bid', async (req, res) => {
-    const bidBValue = req.body;
+    try {
+        const bidBValue = req.body;
     const offer = Object.values(bidBValue).toString();
 
     await auctionManager.addBidder(req.user._id, offer, req.params.id);
     res.redirect(`/auction/${req.params.id}/details`)
+    } catch (err) {
+        res.redirect(`/auction/${req.params.id}/details`, {error: getErrorMessage(err) })
+        
+    }
+    
 });
 
 

@@ -1,13 +1,13 @@
 <main>
 
     <!-- In case of error, display the following div-->
-    <!--
 
-            <div class="error-box">
-                <p>Show each error in a separate paragraph</p>
-            </div>
+    {{#if error}}
+    <div class="error-box">
+        <p>{{error}}</p>
+    </div>
+    {{/if}}
 
-            -->
 
     <!-- Create Page -->
     <section id="create-section" class="">
