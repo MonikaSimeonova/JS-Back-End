@@ -27,11 +27,13 @@
                             <label>
                                 <span>Category</span>
                                 <select name="category">
-                                    <option value="estate">Real Estate</option>
-                                    <option value="vehicles">Vehicles</option>
+                                    {{#each options}}
+                                    <option value="{{value}}"{{#if selected}}selected{{/if}}>{{title}}</option>
+                                    {{/each}}
+                                    {{!-- <option value="vehicles">Vehicles</option>
                                     <option value="furniture">Furniture</option>
                                     <option value="electronics">Electronics</option>
-                                    <option value="other">Other</option>
+                                    <option value="other">Other</option> --}}
                                 </select>
                             </label>
                             <label>
