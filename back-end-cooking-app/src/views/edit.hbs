@@ -1,0 +1,23 @@
+<section class="create">
+    <h1>Edit recipe</h1>
+    <div class="form">
+        {{#with recipie}}
+        <form class="createForm" method="post">
+            <label for="name">Recipe Name</label>
+            <input type="text" id="name" name="name" value="{{name}}">
+            <label for="description">How is cooked</label>
+            <textarea type="text" name="description">{{description}}</textarea>
+            <label for="image">Link to the image</label>
+            <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
+            <label for="difficulty" name="difficultyLevel">Difficulty Level</label>
+            <select id="difficulty" name="difficultyLevel">
+                <option id="option" value="{{difficultyLevel}}">{{difficultyLevel}}</option>
+                <option id="option" value="easy">Easy</option>
+                <option id="option" value="intermediate">Intermediate</option>
+                <option id="option" value="expert">Expert</option>
+            </select>
+            <button id="btn">Edit</button>
+        {{/with}}
+        </form>
+    </div>
+</section>

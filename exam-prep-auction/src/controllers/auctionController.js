@@ -41,7 +41,7 @@ router.get('/:id/details', async (req, res) => {
         }
         res.render('details-owner', { data })
     } else {
-        if (req.user?._id !== data.bidder._id.toString()) {
+        if (req.user?._id !== data.bidder?._id.toString()) {
 
             data.isBitted = false
         } else {
@@ -103,7 +103,7 @@ router.post('/:id/bid', isAuth, async (req, res) => {
         await auctionManager.addBidder(req.user._id, offer, req.params.id);
         res.redirect(`/auction/${req.params.id}/details`)
     } catch (err) {
-        res.redirect(`/auction/${req.params.id}/details`, { error: getErrorMessage(err) })
+        res.render(`/auction/${req.params.id}/details`, { error: getErrorMessage(err) })
 
     }
 

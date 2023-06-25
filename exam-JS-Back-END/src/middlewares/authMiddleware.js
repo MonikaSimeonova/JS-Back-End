@@ -1,5 +1,6 @@
 const jwt = require('../lib/jwt')
 const { SECRET } = require('../config/config');
+const animalManager = require('../managers/animalManager');
 
 
 exports.auth = async (req, res, next) => {
@@ -27,3 +28,13 @@ exports.isAuth = (req,res, next)=>{
     }
     next();
 }
+
+exports.isOwnerCheck = async(req, res, next)=>{
+    const animal = await animalManager.getOne(req.params.id);
+console.log(animal.owner._id);
+    if(animal.owner._id == req.user._id){
+        next()
+    }else{
+        res.redirect(`/animals/${req.params.id}/details`)
+    }
+};

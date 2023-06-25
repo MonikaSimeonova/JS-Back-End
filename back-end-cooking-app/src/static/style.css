@@ -1,0 +1,334 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Playfair', serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* NAVIGATION BAR */
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 1200px;
+    background-color: rgb(170, 108, 199);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+
+div>li {
+    width: 150px;
+    font-size: 50px;
+    list-style-type: none;
+}
+
+nav ul {
+    display: flex;
+    gap: 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.7em;
+}
+
+ul>li {
+    font-size: 30px;
+    list-style-type: none;
+    font-weight: 450;
+}
+
+nav ul li a:hover,
+.fa-solid:hover {
+    color: rgb(196, 182, 34);
+    transition: 0.4s;
+}
+
+/* HOME PAGE */
+
+.wrapper {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    max-width: 1200px;
+    align-items: center;
+    justify-content: center;
+    background-color: #d7d3d9;
+}
+
+/*SEARCH BAR*/
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 400;
+
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.search input {
+    width: 40em;
+    height: 2em;
+    border-radius: 10px;
+    border-color: 1px solid black;
+}
+
+.search input[type="submit"] {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 5px 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: min-content;
+    background-color: rgb(170, 108, 199);
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: rgb(224, 185, 243);
+}
+
+/* RECIPIES CATALOG */
+
+
+.recipies {
+    display: flex;
+   
+    gap: 2em;
+    max-width: 1200px;
+    justify-content: center;
+}
+
+.recipe {
+    border: 1px solid black;
+    background-color: #b9bdc1;
+    text-align: center;
+    border-radius: 10px;
+    width: 100%;
+   
+    margin: 0;
+    padding: 10px 12px;
+    gap: 15px;
+}
+.imgWidth{
+    width: 200px;
+    height: 200px;
+}
+
+/* .recipe {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: #b9bdc1;
+    text-align: center;
+    border-radius: 10px;
+    width: 20%;
+    min-width: 200px;
+    margin: 0;
+    padding: 10px 12px;
+    gap: 15px;
+} */
+
+.recipe  img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.recipe .country,
+.recipe p {
+    font-size: 20px;
+    text-align: center;
+}
+.food-recipe{
+    margin: 0;
+}
+
+.text{
+    background-color: #ccd0d2;
+    border-radius: 20px;
+}
+
+.btn {
+    border-radius: 10px;
+    border: 1px solid rgb(96, 94, 94);
+    color: white;
+    text-decoration: none;
+    padding: 10px 30px;
+    background-color: rgb(59, 61, 61);
+}
+
+/* CREATE PAGE AND EDIT PAGE*/
+
+
+.createForm {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.createForm input,
+.createForm textarea,
+.createForm select {
+    padding: 0.3em 5em;
+    margin: 1em 30em;
+    border-radius: 5px;
+    border-color: solid #4f86ba;
+}
+
+.createForm button {
+    font-size: 20px;
+    background-color: rgb(170, 108, 199);
+    border-radius: 20px;
+    width: 150px;
+    height: auto;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+    padding: 1em 0em;
+    margin: 1em;
+}
+
+.createForm button:hover {
+    cursor: pointer;
+    background-color: rgb(172, 123, 195);
+}
+
+#option {
+    font-size: 20px;
+}
+
+footer {
+    background: #607588;
+    padding: 1em;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* 404 NOT FOUND */
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.not-found>h1 {
+    color: rgb(174, 2, 137);
+    font-size: 8em;
+    margin-bottom: 0rem;
+}
+
+.not-found>h2 {
+    color: rgb(68, 59, 66);
+    font-size: 4em;
+    margin-top: 0rem;
+}
+
+.not-found>h3 {
+    color: rgb(68, 59, 66);
+    font-size: 2em;
+    margin-top: 0rem;
+}
+
+.back {
+    width: 150px;
+    height: auto;
+    align-self: center;
+    background-color: rgb(80, 146, 146);
+    padding-top: 3em;
+    padding-bottom: 3rem;
+    font-size: 15px;
+    border-radius: 35px;
+
+}
+
+.back:hover {
+    cursor: pointer;
+    background-color: #5899d6;
+}
+
+/* ABOUT US PAGE */
+
+.about-us {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+img{
+    width: 500px;
+    margin-left: 20px;
+    border-radius: 20px;
+}
+.aboutInfo h1{
+    margin: 0;
+    font-size: 1.5rem;
+}
+.aboutInfo h2{
+    font-size:1.3rem ;
+}
+
+/* DETAILS PAGE */
+
+.foodImgDetails {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.foodImgDetails>img {
+    width: 35%;
+    border-radius: 10px;
+}
+
+.details {
+    margin-left: 40%;
+    width: 100%;
+}
+
+.details>p {
+    font-size: 25px;
+    margin-left: 45px;
+}
+
+.btnBack,
+.btnEdit,
+.btnDel {
+    border: solid #4f86ba;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px 30px;
+    margin-left: 20px;
+}
+
+.btnBack:hover,
+.btnEdit:hover,
+.btnDel:hover {
+    border: solid #10426e;
+    background-color: #4f86ba;
+}

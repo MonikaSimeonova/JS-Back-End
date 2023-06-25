@@ -4,12 +4,12 @@ const userManager = require('../managers/userManager');
 const { getErrorMessage } = require('../utils/errorHelpers')
 
 router.get('/login', (req, res) => {
-    res.render('users/login')
+    res.render('users/login', {title: 'Login page'});
 });
 router.post('/login', async (req, res) => {
     try {
-        const { username, password } = req.body;
-        const token = await userManager.login(username, password)
+        const { email, password } = req.body;
+        const token = await userManager.login(email, password)
         res.cookie('token', token)
 
         res.redirect('/')
@@ -20,16 +20,17 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-    res.render('users/register')
+    res.render('users/register',{title: 'Register page'});
 });
 router.post('/register', async (req, res) => {
     try {
-        const { username, email, password, repeatPassword } = req.body;
+        const { email, password, repeatPassword } = req.body;
 
-        const token = await userManager.register({ username, email, password, repeatPassword });
+        const token = await userManager.register({  email, password, repeatPassword });
         res.cookie('token', token)
         res.redirect('/')
     } catch (err) {
+        console.log(err);
         res.render('users/register', { error: getErrorMessage(err) })
     }
 

@@ -2,19 +2,18 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-    username: {
+    email: {
         type: String,
-        required: [true,'Username is required'],
-        unique: true
+        unique: true,
+        minLength: [10,'Email should be at least 10 characters long.'],
+        required: [true,'Email is required']
     },
     password: {
         type: String,
+        minLength: [4,'Password should be at least 4 characters long.'],
         required: [true,'Password is required']
     },
-    email: {
-        type: String,
-        required: [true,'Email is required']
-    },
+   
 });
 
 userSchema.virtual('repeatPassword')
