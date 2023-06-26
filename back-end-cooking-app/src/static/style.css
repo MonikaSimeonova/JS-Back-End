@@ -134,7 +134,7 @@ input[type="submit"]:hover {
 
 .imgWidth {
     display: flex;
-    width: 200px;
+    width: auto;
     height: 200px;
 }
 
@@ -169,17 +169,24 @@ input[type="submit"]:hover {
 }
 
 .text {
+    width: auto;
+    height: 150px;
     background-color: #ccd0d2;
     border-radius: 20px;
 }
 
 .btn {
+    width: 50px;
+    align-self: center;
     border-radius: 10px;
     border: 1px solid rgb(96, 94, 94);
     color: white;
     text-decoration: none;
     padding: 10px 30px;
     background-color: rgb(59, 61, 61);
+}
+.btn:hover{
+    background-color: rgb(97, 100, 100);
 }
 
 /* CREATE PAGE AND EDIT PAGE*/
